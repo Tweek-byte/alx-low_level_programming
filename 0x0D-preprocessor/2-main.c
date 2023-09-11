@@ -1,13 +1,22 @@
 #include <stdlib.h>
 
 /**
- * main - main code to return the name of the file
+ * main - pints the name of the file
  *
- * Return: 0 on sucess.
+ * Return: returns 0 on success.
 */
-char main(void)
+
+int main(void)
 {
-	_putchar (__FILE__);
+	char *filename = __FILE__;
+
+	while (*filename != '\0')
+	{
+	write(1, filename, 1);
+	filename++;
+	}
+
+	write(1, "\n", 1);
 
 	return (0);
 }
