@@ -3,10 +3,11 @@
 /**
  * main - main code to return the name of the file
  *
- * Return: returns the name of the file.
+ * Return: 0 on sucess.
 */
 char main(void)
 {
-	NULL;
-	return (__FILE__);
+	_putchar (__FILE__);
+
+	return (0);
 }
