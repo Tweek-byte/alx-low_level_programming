@@ -1,96 +1,50 @@
 #include <stdio.h>
 #include <stdarg.h>
-#include "variadic_functions.h"
+#include <stddef.h>
+#include <string.h>
 
 /**
-* print_char - Prints a character.
-* @arg: Arguments
+ * print_all - variadic function declaration
+ *
+ * @format: argument
 */
-
-void print_char(va_list arg)
-{
-	char alpha;
-
-	alpha = va_arg(arg, int);
-	printf("%c", alpha);
-}
-
-/**
-* print_int - Prints an integer.
-* @arg: Arguments
-*/
-
-void print_int(va_list arg)
-{
-	int num;
-
-	num = va_arg(arg, int);
-	printf("%d", num);
-}
-
-
-/**
-* print_float - Prints a float.
-* @arg: Arguments
-*/
-
-void print_float(va_list arg)
-{
-	float digit;
-
-	digit = va_arg(arg, double);
-	printf("%f", digit);
-}
-
-/**
-* print_string - Prints a string.
-* @arg: Arguments
-*/
-
-void print_string(va_list arg)
-{
-	char *str;
-
-	str = va_arg(arg, char *);
-	if (str != NULL)
-	{
-		printf("%s", str);
-		return;
-	}
-	printf("(nil)");
-}
-
-/**
- * print_all -> Prints anything
- * @format: Arguments
- */
-
 void print_all(const char * const format, ...)
 {
+	va_list args;
 	int i, j;
-	char *separator = "";
-	va_list list;
+	char *str;
 
-	to_string funcs[] = {
-		{"c", print_char}, {"i", print_int}, {"f", print_float}, {"s", print_string}
-	};
-
-	va_start(list, format);
 	i = 0;
-	while (format && (*(format + i)))
+	va_start(args, format);
+	while (format[i] && format)
 	{
-		j = 0;
-		while (j < 4 && (*(format + i) != *(funcs[j].str)))
-			j++;
-
-		if (j < 4)
+		j = 1;
+		switch (format[i++])
 		{
-			printf("%s", separator);
-			funcs[j].print(list);
-			separator = ", ";
+			case 'c':
+				printf("%c", va_arg(args, int));
+				break;
+			case 'i':
+				printf("%i", va_arg(args, int));
+				break;
+			case 'f':
+				printf("%f", va_arg(args, double));
+				break;
+			case 's':
+				str = va_arg(args, char *);
+				if (str == NULL)
+				{
+					str = "(nil)";
+				}
+				printf("%s", str);
+				break;
+			default:
+				j = 0;
+				break;
 		}
-		i++;
+		if (format[i] && j)
+			printf(", ");
 	}
 	printf("\n");
-	va_end(list);
+	va_end(args);
 }
