@@ -2,28 +2,23 @@
 #include <stdarg.h>
 
 /**
- * sum_them_all - variadic function declaration
+ * sum_them_all - calculates the sum of variable arguments
  *
- * @n: const argument
- * @...: number of arguments
- * Return: the value of sum
+ * @n: number of arguments
+ * @...: integers
+ *
+ * Return: the sum result
 */
 int sum_them_all(const unsigned int n, ...)
 {
-	const unsigned int *p;
-	unsigned int i;
-	int sum;
-	va_list args;
+	int sum = 0, i = n;
+	va_list ap;
 
-	p = &n;
-	va_start(args, n);
-	sum = 0;
-	if (n == 0)
+	if (!n)
 		return (0);
-	for (i = 0; i < *p; i++)
-	{
-		sum += va_arg(args, int);
-	}
-	va_end(args);
+	va_start(ap, n);
+	while (i--)
+		sum += va_arg(ap, int);
+	va_end(ap);
 	return (sum);
 }
