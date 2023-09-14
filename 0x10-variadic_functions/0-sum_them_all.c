@@ -4,9 +4,9 @@
 /**
  * sum_them_all -> Function that returns the sum of all its parameters.
  *
- * @n: number.
+ * @n: Input Number
  *
- * Return: sum of all parametres
+ * Return: Depennd Condition
  */
 
 int sum_them_all(const unsigned int n, ...)
