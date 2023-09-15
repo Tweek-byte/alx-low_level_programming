@@ -12,7 +12,7 @@
  *              - 'i': for integer arguments
  *              - 'f': for float arguments
  *              - 's': for string arguments (if NULL, "(nil)" is printed)
- *              The arguments are printed in the order specified by the format string.
+ *              The arguments are printed in the order specified.
  *              The function prints a newline character at the end.
  *
  * Return: void
