@@ -3,15 +3,15 @@
 #include "lists.h"
 
 /**
- * release_list - Frees the memory allocated for a linked list.
+ * free_list - Realease the memory allocated for a list
  *
- * @head: A pointer to the first node of the list to be freed.
+ * @head: A pointer to the first node of the list to free
  */
-void release_list(list_t *head)
+void free_list(list_t *head)
 {
 	if (head)
 	{
-		release_list(head->next);
+		free_list(head->next);
 		if (head->str)
 			free(head->str);
 		free(head);
