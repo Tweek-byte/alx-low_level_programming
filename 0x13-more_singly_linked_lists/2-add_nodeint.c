@@ -11,10 +11,11 @@
  * Return: adress of the new element of the new node, NULL if fails.
  */
 listint_t *add_nodeint(listint_t **head, const int n)
-{
+{	
+	listint_t z;
 	if (head == NULL)
 		return (NULL);
-	listint_t *z = (listint_t *)malloc(sizeof(listint_t));
+	z = (listint_t *)malloc(sizeof(listint_t));
 
 	if (z == NULL)
 		return (NULL);
