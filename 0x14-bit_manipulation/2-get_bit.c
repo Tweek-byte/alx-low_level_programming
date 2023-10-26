@@ -6,7 +6,7 @@
  * @index: The index.
  *
  * Return: The value of the bit at the given index (0 or 1),
- * 	-1 if we cant.
+ * -1 if fails.
  */
 
 int get_bit(unsigned long int n, unsigned int index)
