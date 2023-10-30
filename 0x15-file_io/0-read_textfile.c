@@ -13,29 +13,29 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	if (!filename)
-		return (0);
-
-	int fd = open(filename, O_RDONLY);
-
-	if (fd == -1)
-		return (0);
-
-	char buf[1024];
+	int fd;
+	char buf[1024 * 8];
 	ssize_t bytes;
 	ssize_t to_print;
 
-	bytes = read(fd, buf, sizeof(buf));
+	if (filename == NULL)
+		return (0);
+	if (!letters)
+		return (0);
 
+	fd = open(filename, 0_RDONLY)
+		if (fd == -1)
+			return (0);
+
+	bytes = read(fd, &buf[0], letters);
 	if (bytes == -1)
 		close(fd);
 		return (0);
 
-	to_print = write(STDOUT_FILENO, bytes, (letters < bytes) ? letters : bytes);
-
-	if (to_print == -1 || to_print != bytes)
+	to_print = write(STDOUT_FILENO, &buf[0], bytes);
+	if (to_print == -1)
 		close(fd);
-		return (O);
+		return (0);
 
 	close(fd);
 	return (to_print);
