@@ -18,24 +18,29 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	ssize_t bytes;
 	ssize_t to_print;
 
-	if (filename == NULL)
-		return (0);
-	if (!letters)
+	if (filename == NULL || !letters)
 		return (0);
 
-	fd = open(filename, O_RDONLY)
+	fd = open(filename, O_RDONLY);
+
 		if (fd == -1)
 			return (0);
 
-	bytes = read(fd, &buf[0], letters);
-	if (bytes == -1)
-		close(fd);
-		return (0);
+	bytes = read(fd, buf, letters);
 
-	to_print = write(STDOUT_FILENO, &buf[0], bytes);
-	if (to_print == -1)
+	if (bytes == -1)
+	{
 		close(fd);
 		return (0);
+	}
+
+	to_print = write(STDOUT_FILENO, buf, bytes);
+
+	if (to_print == -1)
+	{
+		close(fd);
+		return (0);
+	}
 
 	close(fd);
 	return (to_print);
