@@ -14,7 +14,8 @@ int main(int argc, char *argv[])
 {
 	unsigned int index, sum;
 	size_t username_length, sum_of_chars;
-	char *charset = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
+	char *charset = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+
+		4mjW6fxqZeF3Qa1rPhdKIouk";
 	char generated_key[7] = "      ";
 
 	if (argc != 2)
