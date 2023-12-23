@@ -59,7 +59,7 @@ typedef struct s_hash_node_s
 	struct s_hash_node_s *next;
 	struct s_hash_node_s *s_prev;
 	struct s_hash_node_s *s_next;
-} shash_node_t;
+} s_hash_node_t;
 
 /**
  * struct s_hash_table - Hash table
