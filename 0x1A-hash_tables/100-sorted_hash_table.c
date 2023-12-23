@@ -102,23 +102,23 @@ void add_to_sorted_list(s_hash_table_t *table, shash_node_t *sorted_node)
 
 /**
  * s_hash_table_set - Sets a key to a value in the hash table.
- * @htzb: The sorted hash table.
+ * @htdb: The sorted hash table.
  * @key: The key to the data.
  * @value: The data to add.
  *
  * Return: 1 on success, 0 otherwise.
  */
-int s_hash_table_set(s_hash_table_t *htzb, const char *key, const char *value)
+int s_hash_table_set(s_hash_table_t *htdb, const char *key, const char *value)
 {
 	unsigned long int hashed_index;
 	char *new_value;
 	shash_node_t *sorted_node, *current_node;
 
-	if (!htzb || !htzb->array || !htzb->size ||
+	if (!htdb || !htdb->array || !htdb->size ||
 			!key || !strlen(key) || !value)
 		return (0);
-	hashed_index = key_index((const unsigned char *)key, htzb->size);
-	current_node = htzb->array[hashed_index];
+	hashed_index = key_index((const unsigned char *)key, htdb->size);
+	current_node = htdb->array[hashed_index];
 	while (current_node)
 	{
 		if (strcmp(current_node->key, key) == 0)
@@ -135,9 +135,9 @@ int s_hash_table_set(s_hash_table_t *htzb, const char *key, const char *value)
 	sorted_node = make_shash_node(key, value);
 	if (!sorted_node)
 		return (0);
-	sorted_node->next = htzb->array[hashed_index];
-	htzb->array[hashed_index] = sorted_node;
-	add_to_sorted_list(htzb, sorted_node);
+	sorted_node->next = htdb->array[hashed_index];
+	htdb->array[hashed_index] = sorted_node;
+	add_to_sorted_list(htdb, sorted_node);
 	return (1);
 }
 
