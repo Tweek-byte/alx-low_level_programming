@@ -42,47 +42,4 @@ unsigned long int key_index(const unsigned char *key, unsigned long int size);
 char *hash_table_get(const hash_table_t *ht, const char *key);
 void hash_table_print(const hash_table_t *ht);
 
-/**
- * struct s_hash_node_s - Node of a hash table
- *
- * @key: The key, string
- *
- * @value: The value corresponding to a key
- * @next: A pointer to the next node of the List
- * @s_prev: A pointer to the previous element of the sorted linked list
- * @s_next: A pointer to the next element of the sorted linked list
- */
-typedef struct s_hash_node_s
-{
-	char *key;
-	char *value;
-	struct s_hash_node_s *next;
-	struct s_hash_node_s *s_prev;
-	struct s_hash_node_s *s_next;
-} s_hash_node_t;
-
-/**
- * struct s_hash_table - Hash table
- *
- * @size: The size of the array
- * @array: An array of size @size
- *
- * @s_tail: Pointer to the last element in the linked list
- * @s_head: Pointer to the first element in the linked list
- */
-typedef struct s_hash_table
-{
-	unsigned long int size;
-	shash_node_t **array;
-	shash_node_t *s_head;
-	shash_node_t *s_tail;
-} s_hash_table_t;
-
-s_hash_table_t *s_hash_table_create(unsigned long int size);
-int s_hash_table_set(s_hash_table_t *sot, const char *key, const char *value);
-char *s_hash_table_get(const s_hash_table_t *sorted_ht, const char *key);
-void s_hash_table_print(const s_hash_table_t *sorted_ht);
-void s_hash_table_print_rev(const s_hash_table_t *sorted_ht);
-void s_hash_table_delete(s_hash_table_t *sorted_ht);
-
 #endif
