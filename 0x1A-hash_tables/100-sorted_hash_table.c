@@ -83,8 +83,7 @@ void add_to_sorted_list(s_hash_table_t *table, shash_node_t *sorted_node)
 	{
 		if (strcmp(sorted_node->key, current_node->key) < 0)
 		{
-			sorted_node->s_next =
-				sorted_node->s_next = current_node;
+			sorted_node->s_next = current_node;
 			sorted_node->s_prev = current_node->s_prev;
 			current_node->s_prev = sorted_node;
 			if (sorted_node->s_prev)
