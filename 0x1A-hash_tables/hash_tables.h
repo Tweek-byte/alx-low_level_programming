@@ -79,10 +79,10 @@ typedef struct s_hash_table
 } s_hash_table_t;
 
 s_hash_table_t *s_hash_table_create(unsigned long int size);
-int s_hash_table_set(s_hash_table_t *htzb, const char *key, const char *value);
-char *s_hash_table_get(const s_hash_table_t *ht, const char *key);
-void s_hash_table_print(const s_hash_table_t *ht);
-void s_hash_table_print_rev(const s_hash_table_t *ht);
-void s_hash_table_delete(s_hash_table_t *ht);
+int s_hash_table_set(s_hash_table_t *htdb, const char *key, const char *value);
+char *s_hash_table_get(const s_hash_table_t *sorted_ht, const char *key);
+void s_hash_table_print(const s_hash_table_t *sorted_ht);
+void s_hash_table_print_rev(const s_hash_table_t *sorted_ht);
+void s_hash_table_delete(s_hash_table_t *sorted_ht);
 
 #endif
